@@ -1,11 +1,15 @@
 
 usage()
 {
-	echo "Usage: twine.sh -u|--user <user> -p|--password <password> --repository-url <repo-url>"
-
+	echo "Usage: twine.sh <options>
+options:
+	-u,--user           username
+	-p,--password       password 
+	-r,--repository-url url of the pypi repository
+"
 }
 
-options=$(getopt -o u:p: --long user:,password:,repository-url: -- "$@")
+options=$(getopt -o u:p:r: --long user:,password:,repository-url: -- "$@")
 if [ $? != 0 ]; then  
     echo "Incorrect options provided"
     exit 1
@@ -20,7 +24,7 @@ while true; do
 	-p|--password)
 		shift; PASSWORD=$1
 		;;
-	--repository-url)
+	-r,--repository-url)
 		shift; URL=$1
 		;;
 	--)
