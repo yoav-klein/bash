@@ -24,7 +24,7 @@ while true; do
 	-p|--password)
 		shift; PASSWORD=$1
 		;;
-	-r,--repository-url)
+	-r|--repository-url)
 		shift; URL=$1
 		;;
 	--)
@@ -34,6 +34,8 @@ while true; do
 	esac
 	shift
 done
+
+echo $USER $PASSWORD $URL
 
 if [ -z $USER ] || [ -z $PASSWORD ] || [ -z $URL ]; then
 	usage
