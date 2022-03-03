@@ -30,16 +30,75 @@ echo "Now that city is set: ${city:+only if city is set}"
 
 
 ########
+echo "---------------"
+
+count_params()
+{
+	echo $#
+}
 
 bar=foo
 baz=foo
 
 # prints all the variables that matches the pattern
+# when not in double quotes, word splitting occurs
+echo \${!ba*}
 echo ${!ba*}
+count_params ${!ba*}
 
-# when in double quotes, separates them using the first character of IFS
+# when in double quotes, word splitting doesn't occur
 IFS="%"
+echo \"\${!ba*}\"
 echo "${!ba*}"
+count_params "${!ba*}"
 
+# when @ is used
+echo \${!ba@}
+echo ${!ba@}
+count_params ${!ba@}
 
+echo \"\${!ba@}\"
 echo "${!ba@}"
+
+count_params "${!ba@}"
+
+##############3
+echo "----------------"
+
+declare -A arr
+arr[husbend]=yoav
+arr[wife]=dikla
+
+echo \${!arr[*]}
+echo ${!arr[*]}
+count_params ${!arr[*]}
+
+
+echo \"\${!arr[*]}\"
+echo "${!arr[*]}"
+count_params "${!arr[*]}"
+
+echo \${!arr[@]}
+echo ${!arr[@]}
+count_params ${!arr[@]}
+
+
+echo \"\${!arr[@]}\"
+echo "${!arr[@]}"
+count_params "${!arr[@]}"
+
+########################
+echo "-------------------"
+
+#
+# The use of ${parameter#word}
+#
+# word is expanded to produce a pattern. if the pattern matches the beginning of the expanded value of parameter,
+# then the result of the expansion is the expansion with the shortest matching pattern (#) or longest matching pattern (##) deleted
+#
+#
+patt=yo*
+var=yoav
+echo ${var#${patt}}
+echo ${var##${patt}}
+
