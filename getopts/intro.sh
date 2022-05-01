@@ -6,9 +6,9 @@
 #	
 #	Call this script with the followings:
 #	
-#	$ basics.sh -b
-#	$ basics.sh -b -c
-#	$ basics.sh -a Hello -b
+#	$ intro.sh -b
+#	$ intro.sh -b -c
+#	$ intro.sh -a Hello -b
 #
 ##################################
 
