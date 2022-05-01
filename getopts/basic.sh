@@ -20,12 +20,9 @@ while getopts ":ht" opt ; do
 	\? ) echo "Usage: basic.sh [-t] [-h]"
 		;;
 	esac
-	echo "OPTIND: $OPTIND"
 done
-
-echo "First before shift: $1"
 
 ## It is good practice to shift left (effectively remove) 
 # the already-processed arguments
 shift $(( OPTIND-1 ))
-echo "Now: $1"
+echo "The first positional parameter now: $1"
