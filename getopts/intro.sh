@@ -21,7 +21,6 @@ echo "----------------------------"
 echo "First call to getopts"
 if getopts "a:bc" option; then
 	echo "option: $option"
-	echo "return value: $ret"
 	echo "OPTARG: $OPTARG"
 	echo "OPTIND: $OPTIND"
 else
@@ -32,7 +31,6 @@ echo "------------------------"
 echo "Second call to getopts"
 if getopts "a:bc" option; then
 	echo "option: $option"
-	echo "return value: $ret"
 	echo "OPTARG: $OPTARG"
 	echo "OPTIND: $OPTIND"
 else
