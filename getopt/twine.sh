@@ -15,17 +15,19 @@ if [ $? != 0 ]; then
     exit 1
 fi
 
+echo "$options"
+
 eval set -- "$options"
 while true; do
 	case "$1" in
 	-u|--user)
-		shift; USER=$1
+		shift; user=$1
 		;;
 	-p|--password)
-		shift; PASSWORD=$1
+		shift; password=$1
 		;;
 	-r|--repository-url)
-		shift; URL=$1
+		shift; url=$1
 		;;
 	--)
 		shift
@@ -35,11 +37,14 @@ while true; do
 	shift
 done
 
-echo $USER $PASSWORD $URL
+echo "The received arguments are: "
+echo $user $password $url
 
-if [ -z $USER ] || [ -z $PASSWORD ] || [ -z $URL ]; then
+if [ -z $user ] || [ -z $password ] || [ -z $url ]; then
 	usage
 	exit 1
 fi
+
+echo "$@"
 
 
