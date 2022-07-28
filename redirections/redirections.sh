@@ -50,10 +50,17 @@ redirection_location() {
     cat log.txt
 }
 
+redirecting_stdout_and_stderr() {
+    # this operator allows redirecting both stdout and stderr
+    ls not_exist_file redirections.sh &> log.txt
+     &> log.txt ls not_exist_file redirections.sh
+    
+}
+
 # simple
 # appending
-#redirection_order
-redirection_location
-
+# redirection_order
+# redirection_location
+redirecting_stdout_and_stderr
 #clean
 
