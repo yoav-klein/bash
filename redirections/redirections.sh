@@ -57,10 +57,20 @@ redirecting_stdout_and_stderr() {
     
 }
 
+duplicating_fds() {
+    # the [n]>&word and [n]<&word forms are used to duplicate file descriptors
+    # run this
+    ls  -lah /proc/${$}/fd >log.txt 2>&1
+    # and see that fd 2 points to what fd 1 points to
+    cat log.txt
+
+}
+
 # simple
 # appending
 # redirection_order
 # redirection_location
-redirecting_stdout_and_stderr
+# redirecting_stdout_and_stderr
+duplicating_fds
 #clean
 
