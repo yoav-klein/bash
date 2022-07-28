@@ -7,11 +7,11 @@
 [ $__logger_sourced__ ] && return
 __logger_sourced__=1
 
-COLOR_RED="\e[31;1m"
-COLOR_GREEN="\e[32;1m"
-COLOR_YELLOW="\e[33;1m"
-COLOR_TITLE="\e[0;44m"
-RESET="\e[0m"
+COLOR_RED    ="\e[31;1m"
+COLOR_GREEN  ="\e[32;1m"
+COLOR_YELLOW ="\e[33;1m"
+COLOR_TITLE  ="\e[0;44m"
+RESET        ="\e[0m"
 _init() {
     echo "init"
     declare -gA _log_levels
@@ -35,7 +35,6 @@ _print_log() {
     }
 
 }
-
 
 
 #### API functions
