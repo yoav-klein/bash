@@ -3,11 +3,15 @@
 # this should be evlolved into a nice logging library in bash
 # reference https://github.com/codeforester/base/blob/master/lib/stdlib.sh
 
-
 ## check if already sourced, and return if is
 [ $__logger_sourced__ ] && return
 __logger_sourced__=1
 
+COLOR_RED="\e[31;1m"
+COLOR_GREEN="\e[32;1m"
+COLOR_YELLOW="\e[33;1m"
+COLOR_TITLE="\e[0;44m"
+RESET="\e[0m"
 _init() {
     echo "init"
     declare -gA _log_levels
@@ -56,6 +60,17 @@ log_info()     { _print_log INFO    "$@" ;}
 log_debug()    { _print_log DEBUG   "$@" ;}
 
 
+print_error() {  
+    printf "${COLOR_RED}%s${RESET}\n" "$@"
+}
 
+print_success() {  
+    printf "${COLOR_GREEN}%s${RESET}\n" "$@"
+}
+
+print_title() {
+    printf "${COLOR_TITLE}%s${RESET}\n" "$@"
+    
+}
 
 _init

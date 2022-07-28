@@ -16,3 +16,7 @@ log_error "something wrong happened"
 }
 
 somefunc
+
+print_error "Something wrong happened"
+print_success "This is good"
+print_title "About to do something"
