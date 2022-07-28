@@ -22,6 +22,7 @@ _init() {
 #######
 #
 # the function that actually prints the log record
+#   
 #
 #
 _print_log() {
@@ -34,6 +35,28 @@ _print_log() {
     }
 
 }
+
+
+
+#### API functions
+
+
+#####################
+#
+#   set the log level
+#
+#   Usage: 
+#       set_log_level <log_level>
+#   
+#   Log levels:
+#       - CRITICAL
+#       - ERROR
+#       - WARNING
+#       - INFO
+#       - DEBUG
+#
+#
+###################
 
 set_log_level() {
     local selected_level=$1
@@ -52,6 +75,10 @@ set_log_level() {
 
 
 }
+
+############ Log functions
+
+## example: log_fatal "message"
 
 log_fatal()    { _print_log FATAL   "$@" ;}
 log_error()    { _print_log ERROR   "$@" ;}
