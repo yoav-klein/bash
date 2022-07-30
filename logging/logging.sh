@@ -4,8 +4,8 @@
 # reference https://github.com/codeforester/base/blob/master/lib/stdlib.sh
 
 ## check if already sourced, and return if is
-#[ $__logger_sourced__ ] && return
-#__logger_sourced__=1
+[ $__logger_sourced__ ] && return
+__logger_sourced__=1
 
 COLOR_RED="\e[31;1m"
 COLOR_GREEN="\e[32;1m"
