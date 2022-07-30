@@ -4,18 +4,19 @@
 # reference https://github.com/codeforester/base/blob/master/lib/stdlib.sh
 
 ## check if already sourced, and return if is
-[ $__logger_sourced__ ] && return
-__logger_sourced__=1
+#[ $__logger_sourced__ ] && return
+#__logger_sourced__=1
 
-COLOR_RED    ="\e[31;1m"
-COLOR_GREEN  ="\e[32;1m"
-COLOR_YELLOW ="\e[33;1m"
-COLOR_TITLE  ="\e[0;44m"
-RESET        ="\e[0m"
+COLOR_RED="\e[31;1m"
+COLOR_GREEN="\e[32;1m"
+COLOR_YELLOW="\e[33;1m"
+COLOR_TITLE="\e[0;44m"
+RESET="\e[0m"
+
 _init() {
     echo "init"
     declare -gA _log_levels
-    declare -i _log_level_set=3 # default
+    declare -gi _log_level_set=3 # default
     _log_levels=([FATAL]=0 [ERROR]=1 [WARNING]=2 [INFO]=3 [DEBUG]=4)
 }
 
@@ -27,9 +28,9 @@ _init() {
 #
 _print_log() {
     local selected_level=$1; shift
-    local log_level
-    log_level="${_log_levels[$selected_level]}"
-    (( log_level <= _log_level_set )) && {
+    local log_level_num
+    log_level_num="${_log_levels[$selected_level]}"
+    (( log_level_num <= _log_level_set )) && {
         printf '%(%Y-%m-%d:%H:%M:%S)T %-7s %s ' -1 "$selected_level" "${BASH_SOURCE[2]}:${FUNCNAME[2]}:${BASH_LINENO[1]}"
         printf '%s\n' "$@"        
     }
