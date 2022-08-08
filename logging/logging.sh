@@ -14,7 +14,6 @@ COLOR_TITLE="\e[0;44m"
 RESET="\e[0m"
 
 _init() {
-    echo "init"
     declare -gA _log_levels
     declare -gi _log_level_set=3 # default
     _log_levels=([FATAL]=0 [ERROR]=1 [WARNING]=2 [INFO]=3 [DEBUG]=4)
