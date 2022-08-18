@@ -28,6 +28,7 @@ _init() {
 _print_log() {
     local selected_level=$1; shift
     local log_level_num
+
     log_level_num="${_log_levels[$selected_level]}"
     (( log_level_num <= _log_level_set )) && {
         printf '%(%Y-%m-%d:%H:%M:%S)T %-7s %s ' -1 "$selected_level" "${BASH_SOURCE[2]}:${FUNCNAME[2]}:${BASH_LINENO[1]}"
@@ -63,7 +64,9 @@ set_log_level() {
         echo "Usage: set_log_level <log_level>"
         return 1
     fi
-    local level_num="${_log_levels[$selected_level]}"
+
+    echo ${selected_level^^}
+    local level_num="${_log_levels[${selected_level^^}]}"
     
     if [ "$level_num" ]; then
         _log_level_set=$level_num
@@ -91,7 +94,7 @@ print_error() {
 }
 
 print_success() {  
-    printf "${COLOR_GREEN}%s${RESET}\n" "$@"
+    printf "${COLOR_GREEN}=== %s${RESET}\n" "$@"
 }
 
 print_title() {
