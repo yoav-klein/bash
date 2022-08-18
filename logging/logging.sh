@@ -65,9 +65,7 @@ set_log_level() {
         return 1
     fi
 
-    echo ${selected_level^^}
     local level_num="${_log_levels[${selected_level^^}]}"
-    
     if [ "$level_num" ]; then
         _log_level_set=$level_num
     else
