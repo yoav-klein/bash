@@ -17,6 +17,7 @@ _init() {
     declare -gA _log_levels
     declare -gi _log_level_set=3 # default
     _log_levels=([FATAL]=0 [ERROR]=1 [WARNING]=2 [INFO]=3 [DEBUG]=4)
+    _human=true
 }
 
 #######
@@ -78,6 +79,14 @@ set_log_level() {
 
 }
 
+set_human() {
+    _human=true
+}
+
+unset_human() {
+    _human=false
+}
+
 ############ Log functions
 
 ## example: log_fatal "message"
@@ -89,16 +98,22 @@ log_info()     { _print_log INFO    "$@" ;}
 log_debug()    { _print_log DEBUG   "$@" ;}
 
 
-print_error() {  
-    printf "${COLOR_RED}%s${RESET}\n" "$@"
+######### Print functions
+#
+# these are functions for user-friendly statements
+#
+# should be printed only if log_level is set to info
+
+print_error() {
+    $_human && printf "${COLOR_RED}%s${RESET}\n" "$@"
 }
 
-print_success() {  
-    printf "${COLOR_GREEN}=== %s${RESET}\n" "$@"
+print_success() {
+    $_human && printf "${COLOR_GREEN}=== %s${RESET}\n" "$@"
 }
 
 print_title() {
-    printf "${COLOR_TITLE}%s${RESET}\n" "$@"
+    $_human && printf "${COLOR_TITLE}%s${RESET}\n" "$@"
     
 }
 
