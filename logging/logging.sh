@@ -35,6 +35,8 @@ _print_log() {
         printf '%s\n' "$@"        
     }
 
+    return 0
+
 }
 
 
