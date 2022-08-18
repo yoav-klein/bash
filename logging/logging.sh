@@ -106,15 +106,17 @@ log_debug()    { _print_log DEBUG   "$@" ;}
 
 print_error() {
     $_human && printf "${COLOR_RED}%s${RESET}\n" "$@"
+    return 0
 }
 
 print_success() {
     $_human && printf "${COLOR_GREEN}=== %s${RESET}\n" "$@"
+    return 0
 }
 
 print_title() {
     $_human && printf "${COLOR_TITLE}%s${RESET}\n" "$@"
-    
+    return 0
 }
 
 _init
