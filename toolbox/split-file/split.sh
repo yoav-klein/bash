@@ -2,7 +2,6 @@
 
 usage() {
     echo "$1 <file> <piece_size> [max_num_pieces]"
-    
 }
 
 if [ -z "$1" ] || [ -z "$2" ] ; then
@@ -21,7 +20,7 @@ cp $file source
 
 curr_lines_num=$(wc -l source | awk '{print $1}')
 num=0
-while [ "$curr_lines_num" -ge "$piece_size" ]; do
+while [ "$curr_lines_num" -gt 0 ]; do
     head -n $piece_size source > "file${num}"
     (( num+=1 ))
     tail -n +$(( piece_size + 1 )) source > tmp
